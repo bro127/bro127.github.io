@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="BKHawk — digital creator, tech explorer, and community builder." />
-  <title>BKHawk | Portfolio</title>
+  <meta name="description" content="Bruk Getachew — Grade 10 developer building AI tutor web apps, Telegram bots, AI agents, and OpenAI-compatible bridges." />
+  <title>Bruk Getachew | BKHawk Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="noise"></div>
   <div class="bg-orb orb-one"></div>
   <div class="bg-orb orb-two"></div>
+
   <header class="nav">
     <a class="brand" href="#home"><span>BK</span>HAWK</a>
     <nav>
@@ -20,86 +22,109 @@
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
+      <a href="admin.html" class="admin-link">Admin</a>
     </nav>
   </header>
 
   <main id="home">
     <section class="hero section">
       <div class="hero-copy">
-        <p class="eyebrow">Portfolio • Digital Identity • Creator</p>
-        <h1>Building sharp digital experiences with bold energy.</h1>
-        <p class="lead">I’m <strong>BKHawk</strong> — a tech-focused creator building online brands, useful tools, communities, and clean web experiences.</p>
+        <p class="eyebrow">Developer • Student • AI Builder</p>
+        <h1>Hi, I’m Bruk Getachew — building useful AI tools before graduation.</h1>
+        <p class="lead">Grade 10 student, Orthodox Christian, and young developer creating AI tutor websites, Telegram automation bots, multi-function AI agents, OpenAI-compatible bridges, and practical web tools.</p>
         <div class="hero-actions">
-          <a class="btn primary" href="#projects">View Projects</a>
-          <a class="btn ghost" href="https://t.me/Noypi_World_Wide_vpn" target="_blank" rel="noreferrer">Telegram Channel</a>
+          <a class="btn primary" href="#projects">View My Work</a>
+          <a class="btn ghost" href="https://t.me/Nameofbless" target="_blank" rel="noreferrer">Message on Telegram</a>
         </div>
       </div>
-      <div class="hero-card">
-        <div class="hawk-mark">🦅</div>
-        <h2>BKHawk</h2>
-        <p>Fast learner. Creative builder. Future-focused.</p>
-        <div class="stats">
-          <span><b>2026</b> Portfolio</span>
-          <span><b>24/7</b> Online</span>
-          <span><b>∞</b> Ambition</span>
+
+      <aside class="profile-card">
+        <div class="image-frame">
+          <img id="profileImage" alt="Bruk Getachew profile image" />
+          <div id="imageFallback" class="image-fallback">BG</div>
         </div>
-      </div>
+        <h2>Bruk Getachew</h2>
+        <p>Grade 10 student • AI & bot developer • Ethiopia</p>
+        <div class="mini-tags">
+          <span>Faith: Orthodox Christian</span>
+          <span>Best Subject: Biology</span>
+          <span>Favorite Place: Lalibela</span>
+        </div>
+      </aside>
     </section>
 
-    <section id="about" class="section split">
+    <section id="about" class="section split glass">
       <div>
         <p class="eyebrow">About Me</p>
-        <h2>A modern portfolio for a modern builder.</h2>
+        <h2>A student developer with big mission energy.</h2>
       </div>
-      <p>I explore technology, web tools, AI, automation, digital communities, and creative online projects. My goal is simple: create useful things, keep learning, and build a strong digital presence under the BKHawk name.</p>
+      <div class="about-text">
+        <p>My name is <strong>Bruk Getachew</strong>. I’m a Grade 10 student who loves technology, biology, faith, and building tools that help people. I’m focused on coding, AI systems, websites, Telegram bots, and automation.</p>
+        <p>My favorite subject is <strong>Biology</strong>, my faith is <strong>Orthodox Christian</strong>, and one of my favorite places is <strong>Lalibela</strong> — a symbol of history, faith, and Ethiopian greatness.</p>
+      </div>
     </section>
 
     <section id="projects" class="section">
-      <p class="eyebrow">Featured Work</p>
-      <h2>Projects & Focus Areas</h2>
+      <p class="eyebrow">Featured Projects</p>
+      <h2>Things I build</h2>
       <div class="grid cards">
         <article class="card">
-          <span class="icon">🌐</span>
-          <h3>Portfolio Website</h3>
-          <p>A clean personal website for identity, links, contact, and future projects.</p>
-        </article>
-        <article class="card">
-          <span class="icon">📢</span>
-          <h3>Online Community</h3>
-          <p>Growing a Telegram-based digital community with updates, tools, and useful content.</p>
+          <span class="icon">🎓</span>
+          <h3>AI Tutor Web</h3>
+          <p>An educational AI tutor concept for helping students learn faster, ask questions, and understand subjects more clearly.</p>
         </article>
         <article class="card">
           <span class="icon">🤖</span>
-          <h3>AI & Automation</h3>
-          <p>Experimenting with AI assistants, desktop agents, and automation workflows.</p>
+          <h3>Auto Poster Telegram Bot</h3>
+          <p>Automation bots for Telegram channels, including scheduled posting, content formatting, and useful community updates.</p>
         </article>
         <article class="card">
-          <span class="icon">⚡</span>
-          <h3>Web Experiments</h3>
-          <p>Testing free hosting, domains, dashboards, remote access, and web-based tools.</p>
+          <span class="icon">🧠</span>
+          <h3>Multi-Function AI Agent</h3>
+          <p>AI agent ideas for coding help, research, automation, web tasks, file work, and assistant-style workflows.</p>
+        </article>
+        <article class="card">
+          <span class="icon">🔌</span>
+          <h3>OpenAI-Compatible AI Bridge</h3>
+          <p>Bridge tools that connect apps to AI models through OpenAI-compatible APIs and custom coding workflows.</p>
         </article>
       </div>
     </section>
 
-    <section id="skills" class="section">
-      <p class="eyebrow">Skills</p>
-      <h2>What I’m building strength in</h2>
+    <section id="skills" class="section glass center">
+      <p class="eyebrow">Skills & Interests</p>
+      <h2>What I work with</h2>
       <div class="skills">
-        <span>Web Hosting</span><span>Domains</span><span>AI Tools</span><span>Automation</span><span>Community Building</span><span>Linux/VPS</span><span>Design</span><span>Content</span>
+        <span>Websites</span><span>Telegram Bots</span><span>AI Agents</span><span>OpenAI-Compatible APIs</span><span>Automation</span><span>Python</span><span>JavaScript</span><span>Linux/VPS</span><span>Biology</span><span>Research</span>
+      </div>
+    </section>
+
+    <section class="section showcase">
+      <div class="showcase-card">
+        <p class="eyebrow">Available For Work</p>
+        <h2>Need a website, bot, AI bridge, or custom code?</h2>
+        <p>I can help build coding projects, websites, Telegram bots, AI tools, automation functions, and custom bridge systems.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="mailto:brukg9419@gmail.com">Email Me</a>
+          <a class="btn ghost" href="https://t.me/Nameofbless" target="_blank" rel="noreferrer">Telegram @Nameofbless</a>
+        </div>
       </div>
     </section>
 
     <section id="contact" class="section contact">
       <p class="eyebrow">Contact</p>
-      <h2>Let’s connect.</h2>
-      <p>Follow the channel or reach out through Telegram.</p>
-      <a class="btn primary" href="https://t.me/Noypi_World_Wide_vpn" target="_blank" rel="noreferrer">Open Telegram</a>
+      <h2>Let’s build something.</h2>
+      <div class="contact-grid">
+        <a href="https://t.me/Nameofbless" target="_blank" rel="noreferrer"><strong>Telegram</strong><span>@Nameofbless</span></a>
+        <a href="mailto:brukg9419@gmail.com"><strong>Email</strong><span>brukg9419@gmail.com</span></a>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>© <span id="year"></span> BKHawk. Built for the web.</p>
+    <p>© <span id="year"></span> Bruk Getachew / BKHawk. Built with faith, focus, and code.</p>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
