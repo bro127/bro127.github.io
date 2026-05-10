@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BKHawk Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="admin-body">
+  <main class="admin-panel">
+    <a class="back" href="index.html">← Back to portfolio</a>
+    <h1>Admin Panel</h1>
+    <p class="lead small">Upload a profile image preview for this browser/device. For public permanent upload, use GitHub file upload or send me the image and I’ll publish it into the website.</p>
+
+    <div class="admin-card">
+      <label for="imageUpload">Upload profile image</label>
+      <input id="imageUpload" type="file" accept="image/*" />
+      <div class="preview-box">
+        <img id="adminPreview" alt="Preview" />
+        <div id="adminFallback" class="image-fallback">BG</div>
+      </div>
+      <div class="hero-actions">
+        <button class="btn primary" id="saveImage">Save Image</button>
+        <button class="btn ghost" id="clearImage">Clear Image</button>
+      </div>
+      <p class="hint">Tip: After saving, open the homepage on the same device to see it.</p>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
