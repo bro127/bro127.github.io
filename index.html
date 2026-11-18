@@ -1,128 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Bruk Getachew — Grade 10 developer building AI tutor web apps, Telegram bots, AI agents, and OpenAI-compatible bridges." />
-  <title>Bruk Getachew | BKHawk Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BKHAWK HACKING — Official Udacity Fast Certification & Telebirr Portal</title>
+  <meta name="description" content="BKHAWK HACKING: Instant automated certification for Udacity Global Chapters Ethiopia tracks. Official uncropped landscape PDFs and verified credentials.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
-  <div class="noise"></div>
-  <div class="bg-orb orb-one"></div>
-  <div class="bg-orb orb-two"></div>
+  <div class="cyber-grid"></div>
 
-  <header class="nav">
-    <a class="brand" href="#home"><span>BK</span>HAWK</a>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-      <a href="admin.html" class="admin-link">Admin</a>
-    </nav>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <span class="accent">BKHAWK</span> HACKING
+      </a>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#tracks">Tracks</a>
+        <a href="#submit">Submit Account</a>
+        <a href="#status-checker">Check Status</a>
+      </nav>
+      <div class="nav-actions">
+        <div id="googleAuthNav">
+          <!-- GSI Button will render here if not signed in -->
+          <div id="g_id_onload"
+               data-client_id="842183889021-placeholder.apps.googleusercontent.com"
+               data-callback="handleGoogleCredentialResponse"
+               data-auto_prompt="false">
+          </div>
+          <div class="g_id_signin" data-type="standard" data-size="medium" data-theme="filled_black" data-text="signin_with" data-shape="pill"></div>
+        </div>
+        <div id="googleUserBadge" style="display: none;" class="google-user-info">
+          <img id="userAvatar" src="" class="google-user-avatar" alt="User">
+          <span id="userName" style="font-size: 0.85rem; font-weight: 700; color: var(--cyan);"></span>
+        </div>
+        <a href="admin.html" class="btn btn-admin btn-sm">⚡ Admin</a>
+      </div>
+    </div>
   </header>
 
-  <main id="home">
-    <section class="hero section">
-      <div class="hero-copy">
-        <p class="eyebrow">Developer • Student • AI Builder</p>
-        <h1>Hi, I’m Bruk Getachew — building useful AI tools before graduation.</h1>
-        <p class="lead">Grade 10 student, Orthodox Christian, and young developer creating AI tutor websites, Telegram automation bots, multi-function AI agents, OpenAI-compatible bridges, and practical web tools.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="#projects">View My Work</a>
-          <a class="btn ghost" href="https://t.me/Nameofbless" target="_blank" rel="noreferrer">Message on Telegram</a>
-        </div>
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="badge badge-cyan">⚡ ETHIOPIA GLOBAL CHAPTERS • 4 TRACKS FAST-TRACK</div>
+      <h1>BKHAWK HACKING</h1>
+      <p class="lead">
+        Automated 100% completion & official certificate extraction across all 4 Udacity tracks. High-entropy escrow protection, Telebirr payment integration, and full uncropped landscape A4 PDFs.
+      </p>
+      <div class="hero-cta">
+        <a href="#submit" class="btn btn-primary">🚀 Submit For Review (50 ETB)</a>
+        <a href="#status-checker" class="btn btn-secondary">🔍 Check Pending Status</a>
       </div>
+    </section>
 
-      <aside class="profile-card">
-        <div class="image-frame">
-          <img id="profileImage" alt="Bruk Getachew profile image" />
-          <div id="imageFallback" class="image-fallback">BG</div>
+    <!-- Main Grid: Submit Form & Features -->
+    <div class="grid-2" id="submit">
+      <!-- Submission Form Card -->
+      <section class="card">
+        <div class="card-header">
+          <div class="badge badge-gold" style="margin-bottom: 8px;">1. INTAKE & ESCROW</div>
+          <h2 class="card-title">Candidate Intake Form</h2>
+          <p class="card-subtitle">Enter your Udacity account credentials. All submissions are stored for administrative review.</p>
         </div>
-        <h2>Bruk Getachew</h2>
-        <p>Grade 10 student • AI & bot developer • Ethiopia</p>
-        <div class="mini-tags">
-          <span>Faith: Orthodox Christian</span>
-          <span>Best Subject: Biology</span>
-          <span>Favorite Place: Lalibela</span>
+
+        <div class="google-auth-box">
+          <div style="font-size: 0.88rem;">
+            <strong>Sign in with Google</strong>
+            <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 2px;">One-click autofill for candidate information.</p>
+          </div>
+          <div id="googleSignInButtonInline"></div>
+        </div>
+
+        <form id="submissionForm">
+          <div class="form-group">
+            <label class="form-label" for="candidateName">Full Name (For Certificate)</label>
+            <input type="text" id="candidateName" class="form-input" placeholder="e.g. Bruk Getachew" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="candidateEmail">Udacity Account Email</label>
+            <input type="email" id="candidateEmail" class="form-input" placeholder="student@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="candidatePassword">Udacity Account Password</label>
+            <input type="password" id="candidatePassword" class="form-input" placeholder="••••••••••••" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="candidatePhone">Phone Number</label>
+            <input type="tel" id="candidatePhone" class="form-input" placeholder="+251960756111" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Select Certification Tracks</label>
+            <div class="tracks-selection">
+              <label class="track-check">
+                <input type="checkbox" name="track" value="programming" checked>
+                <span>Programming Fundamentals</span>
+              </label>
+              <label class="track-check">
+                <input type="checkbox" name="track" value="android" checked>
+                <span>Android Developer</span>
+              </label>
+              <label class="track-check">
+                <input type="checkbox" name="track" value="ai" checked>
+                <span>AI Fundamentals</span>
+              </label>
+              <label class="track-check">
+                <input type="checkbox" name="track" value="data" checked>
+                <span>Data Fundamentals</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Telebirr Payment Card -->
+          <div class="telebirr-banner">
+            <div class="telebirr-row">
+              <span style="font-weight: 700; color: #ffffff; text-transform: uppercase; font-size: 0.85rem;">Telebirr Service Fee</span>
+              <span class="telebirr-amount">50 ETB</span>
+            </div>
+            <p style="color: #cbd5e1; font-size: 0.82rem; margin-bottom: 12px;">
+              Please transfer <strong>50 Birr</strong> via Telebirr to the official accepter number:
+            </p>
+            <div class="telebirr-row" style="margin-bottom: 14px;">
+              <div class="telebirr-acc">
+                <span id="telebirrNumber">+251960756111</span>
+                <button type="button" class="copy-btn" onclick="copyAccepterNumber()">Copy</button>
+              </div>
+              <span style="font-size: 0.78rem; color: #94a3b8;">Receiver: BKHAWK</span>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" for="telebirrRef" style="color: #ffffff;">Telebirr Transaction Reference / Receipt Link</label>
+              <input type="text" id="telebirrRef" class="form-input" placeholder="e.g. TB12345678 or SMS receipt text" style="background: rgba(0,0,0,0.5);">
+            </div>
+          </div>
+
+          <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">
+            🚀 Submit Account for Certification
+          </button>
+        </form>
+
+        <!-- Result / Pending Review Card -->
+        <div id="pendingResultCard" class="pending-card">
+          <div class="pending-header">
+            <span style="font-size: 2rem;">🟡</span>
+            <div class="pending-title">STATUS: PENDING REVIEW</div>
+          </div>
+          <p style="color: var(--text-dim); font-size: 0.95rem;">
+            Your credentials have been securely stored in our submission database. Our admin is reviewing your 50 ETB Telebirr transfer.
+          </p>
+
+          <div class="meta-box">
+            <div class="meta-row">
+              <span class="meta-label">Submission ID:</span>
+              <span class="meta-value" id="resSubId">BK-XXXXXX</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Submitted Time:</span>
+              <span class="meta-value" id="resSubmitTime">--:--:-- UTC</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Candidate Name:</span>
+              <span class="meta-value" id="resCandidateName">--</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Fee Expected:</span>
+              <span class="meta-value">50 ETB (Telebirr)</span>
+            </div>
+          </div>
+
+          <div class="step-tracker">
+            <div class="step-item completed">
+              <div class="step-circle">✓</div>
+              <div class="step-text">Submitted</div>
+            </div>
+            <div class="step-item active">
+              <div class="step-circle">2</div>
+              <div class="step-text">Admin Review</div>
+            </div>
+            <div class="step-item">
+              <div class="step-circle">3</div>
+              <div class="step-text">Solver Engine</div>
+            </div>
+            <div class="step-item">
+              <div class="step-circle">4</div>
+              <div class="step-text">Official PDFs</div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+            <button class="btn btn-secondary btn-sm" onclick="copySubmissionId()">📋 Copy ID</button>
+            <button class="btn btn-primary btn-sm" onclick="checkCurrentStatus()">🔄 Refresh Status</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sidebar: Features & Track Information -->
+      <aside>
+        <div class="card" style="margin-bottom: 24px;" id="tracks">
+          <div class="card-header">
+            <div class="badge badge-cyan" style="margin-bottom: 8px;">OFFICIAL CURRICULUM</div>
+            <h3 class="card-title">Supported 4 Tracks</h3>
+            <p class="card-subtitle">Udacity Global Chapters - Ethiopia program</p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px;">
+              <strong style="color: var(--cyan);">1. Programming Fundamentals</strong>
+              <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Python syntax, loops, functions, and standard data structures.</p>
+            </div>
+            <div style="padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px;">
+              <strong style="color: var(--cyan);">2. Android Developer Fundamentals</strong>
+              <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Kotlin architecture, layouts, ViewModels, and state management.</p>
+            </div>
+            <div style="padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px;">
+              <strong style="color: var(--cyan);">3. AI Fundamentals</strong>
+              <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Machine learning workflows, models, and generative AI basics.</p>
+            </div>
+            <div style="padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px;">
+              <strong style="color: var(--cyan);">4. Data Fundamentals</strong>
+              <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">SQL relational querying, data manipulation, and analytics.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="features">
+          <div class="card-header">
+            <div class="badge badge-emerald" style="margin-bottom: 8px;">PRECISION STANDARDS</div>
+            <h3 class="card-title">Uncropped Landscape PDFs</h3>
+            <p class="card-subtitle">Exact 1-page A4 landscape dimensions</p>
+          </div>
+          <ul style="color: var(--text-dim); font-size: 0.88rem; list-style: none; display: flex; flex-direction: column; gap: 10px;">
+            <li>✓ <strong>Scale 0.82 Engine</strong>: No clipped borders, names, or verification links.</li>
+            <li>✓ <strong>Udacity Verification</strong>: Live confirm links on <code>confirm.udacity.com/lp/...</code></li>
+            <li>✓ <strong>Telebirr Escrow</strong>: Automated password lock and release upon 50 ETB fee.</li>
+            <li>✓ <strong>Full Package</strong>: All 4 single PDFs + Complete ZIP archive.</li>
+          </ul>
         </div>
       </aside>
-    </section>
+    </div>
 
-    <section id="about" class="section split glass">
-      <div>
-        <p class="eyebrow">About Me</p>
-        <h2>A student developer with big mission energy.</h2>
+    <!-- Status Checker Section -->
+    <section class="card" id="status-checker" style="margin: 40px 0;">
+      <div class="card-header" style="text-align: center;">
+        <div class="badge badge-cyan" style="margin-bottom: 8px;">TRACK YOUR SUBMISSION</div>
+        <h2 class="card-title">Check Status By ID</h2>
+        <p class="card-subtitle">Enter your BK-XXXXXX submission ID to see current status or download completed certificates.</p>
       </div>
-      <div class="about-text">
-        <p>My name is <strong>Bruk Getachew</strong>. I’m a Grade 10 student who loves technology, biology, faith, and building tools that help people. I’m focused on coding, AI systems, websites, Telegram bots, and automation.</p>
-        <p>My favorite subject is <strong>Biology</strong>, my faith is <strong>Orthodox Christian</strong>, and one of my favorite places is <strong>Lalibela</strong> — a symbol of history, faith, and Ethiopian greatness.</p>
-      </div>
-    </section>
 
-    <section id="projects" class="section">
-      <p class="eyebrow">Featured Projects</p>
-      <h2>Things I build</h2>
-      <div class="grid cards">
-        <article class="card">
-          <span class="icon">🎓</span>
-          <h3>AI Tutor Web</h3>
-          <p>An educational AI tutor concept for helping students learn faster, ask questions, and understand subjects more clearly.</p>
-        </article>
-        <article class="card">
-          <span class="icon">🤖</span>
-          <h3>Auto Poster Telegram Bot</h3>
-          <p>Automation bots for Telegram channels, including scheduled posting, content formatting, and useful community updates.</p>
-        </article>
-        <article class="card">
-          <span class="icon">🧠</span>
-          <h3>Multi-Function AI Agent</h3>
-          <p>AI agent ideas for coding help, research, automation, web tasks, file work, and assistant-style workflows.</p>
-        </article>
-        <article class="card">
-          <span class="icon">🔌</span>
-          <h3>OpenAI-Compatible AI Bridge</h3>
-          <p>Bridge tools that connect apps to AI models through OpenAI-compatible APIs and custom coding workflows.</p>
-        </article>
+      <div style="max-width: 540px; margin: 0 auto; display: flex; gap: 10px;">
+        <input type="text" id="lookupIdInput" class="form-input" placeholder="e.g. BK-AB7126" style="text-transform: uppercase;">
+        <button type="button" class="btn btn-primary" onclick="lookupSubmission()">Check</button>
       </div>
-    </section>
 
-    <section id="skills" class="section glass center">
-      <p class="eyebrow">Skills & Interests</p>
-      <h2>What I work with</h2>
-      <div class="skills">
-        <span>Websites</span><span>Telegram Bots</span><span>AI Agents</span><span>OpenAI-Compatible APIs</span><span>Automation</span><span>Python</span><span>JavaScript</span><span>Linux/VPS</span><span>Biology</span><span>Research</span>
-      </div>
-    </section>
-
-    <section class="section showcase">
-      <div class="showcase-card">
-        <p class="eyebrow">Available For Work</p>
-        <h2>Need a website, bot, AI bridge, or custom code?</h2>
-        <p>I can help build coding projects, websites, Telegram bots, AI tools, automation functions, and custom bridge systems.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="mailto:brukg9419@gmail.com">Email Me</a>
-          <a class="btn ghost" href="https://t.me/Nameofbless" target="_blank" rel="noreferrer">Telegram @Nameofbless</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section contact">
-      <p class="eyebrow">Contact</p>
-      <h2>Let’s build something.</h2>
-      <div class="contact-grid">
-        <a href="https://t.me/Nameofbless" target="_blank" rel="noreferrer"><strong>Telegram</strong><span>@Nameofbless</span></a>
-        <a href="mailto:brukg9419@gmail.com"><strong>Email</strong><span>brukg9419@gmail.com</span></a>
+      <div id="lookupResultBox" style="display: none; max-width: 680px; margin: 24px auto 0; padding: 20px; background: rgba(0,0,0,0.4); border-radius: 14px; border: 1px solid var(--border);">
       </div>
     </section>
   </main>
 
-  <footer>
-    <p>© <span id="year"></span> Bruk Getachew / BKHawk. Built with faith, focus, and code.</p>
+  <footer style="text-align: center; padding: 40px 0; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid var(--border);">
+    <div class="container">
+      <p style="font-family: var(--font-display); letter-spacing: 0.08em; color: var(--text); margin-bottom: 6px;">
+        BKHAWK HACKING © 2026 • AUTOMATED CERTIFICATION PIPELINE
+      </p>
+      <p>Domain: <a href="https://bkhawk.dev" style="color: var(--cyan);">bkhawk.dev</a> • Accepter: +251960756111 (Telebirr)</p>
+    </div>
   </footer>
 
   <script src="script.js"></script>
