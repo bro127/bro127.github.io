@@ -1,280 +1,434 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light" data-lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BKHAWK HACKING — Official Udacity Fast Certification & Telebirr Portal</title>
-  <meta name="description" content="BKHAWK HACKING: Instant automated certification for Udacity Global Chapters Ethiopia tracks. Official uncropped landscape PDFs and verified credentials.">
+  <title data-i18n-title="meta.title.landing">BKHAWK — Certification Studio</title>
+  <meta name="description" content="BKHAWK completes all four Udacity Global Chapters Ethiopia tracks and delivers clean, uncropped A4 landscape certificate PDFs. Free intake, 50 ETB at claim, Telebirr or manual verification via @nameofbless.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231f1e1b'/%3E%3Cpath d='M32 14v36M15 23l34 18M49 23L15 41' stroke='%23d97757' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Ethiopic:wght@300;400;500;600;700&family=Noto+Serif+Ethiopic:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <!-- Google Identity Services -->
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+    // Theme + language before paint, so neither flashes.
+    (function () {
+      try {
+        if (localStorage.getItem('bkhawk_theme') === 'dark') {
+          document.documentElement.dataset.theme = 'dark';
+        }
+        var lang = localStorage.getItem('bkhawk_lang');
+        if (lang === 'am' || lang === 'en') {
+          document.documentElement.lang = lang;
+          document.documentElement.dataset.lang = lang;
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
-<body>
-  <div class="cyber-grid"></div>
+<body class="landing">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+  <div class="grain"></div>
 
-  <!-- Navbar -->
-  <header class="navbar">
+  <header class="navbar" id="navbar">
     <div class="container nav-container">
-      <a href="index.html" class="brand-logo">
-        <span class="accent">BKHAWK</span> HACKING
+      <a href="index.html" class="brand" aria-label="BKHAWK">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <path d="M12 3v18M4 7.5l16 9M20 7.5l-16 9"/>
+          </svg>
+        </span>
+        <span>
+          <span class="brand-word">BKhawk</span>
+          <span class="brand-tag" data-i18n="brand.tag">Certification Studio</span>
+        </span>
       </a>
-      <nav class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#tracks">Tracks</a>
-        <a href="#submit">Submit Account</a>
-        <a href="#status-checker">Check Status</a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#process" data-i18n="nav.process">Process</a>
+        <a href="#tracks" data-i18n="nav.tracks">Tracks</a>
+        <a href="#standards" data-i18n="nav.standards">Standards</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
       </nav>
+
       <div class="nav-actions">
-        <div id="googleAuthNav">
-          <!-- GSI Button will render here if not signed in -->
-          <div id="g_id_onload"
-               data-client_id="842183889021-placeholder.apps.googleusercontent.com"
-               data-callback="handleGoogleCredentialResponse"
-               data-auto_prompt="false">
-          </div>
-          <div class="g_id_signin" data-type="standard" data-size="medium" data-theme="filled_black" data-text="signin_with" data-shape="pill"></div>
+        <div class="lang-switch" role="group" data-i18n-aria="nav.language" aria-label="Language">
+          <button type="button" data-lang="am" aria-pressed="false">አማ</button>
+          <button type="button" data-lang="en" class="active" aria-pressed="true">EN</button>
         </div>
-        <div id="googleUserBadge" style="display: none;" class="google-user-info">
-          <img id="userAvatar" src="" class="google-user-avatar" alt="User">
-          <span id="userName" style="font-size: 0.85rem; font-weight: 700; color: var(--cyan);"></span>
-        </div>
-        <a href="admin.html" class="btn btn-admin btn-sm">⚡ Admin</a>
+
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+          </svg>
+        </button>
+
+        <a href="app.html" class="btn btn-primary btn-sm nav-cta" data-i18n="nav.enter">Open portal</a>
       </div>
     </div>
   </header>
 
-  <main class="container">
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="badge badge-cyan">⚡ ETHIOPIA GLOBAL CHAPTERS • 4 TRACKS FAST-TRACK</div>
-      <h1>BKHAWK HACKING</h1>
-      <p class="lead">
-        Automated 100% completion & official certificate extraction across all 4 Udacity tracks. High-entropy escrow protection, Telebirr payment integration, and full uncropped landscape A4 PDFs.
-      </p>
-      <div class="hero-cta">
-        <a href="#submit" class="btn btn-primary">🚀 Submit For Review (50 ETB)</a>
-        <a href="#status-checker" class="btn btn-secondary">🔍 Check Pending Status</a>
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero landing-hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-chip">
+            <span class="dot" aria-hidden="true"></span>
+            <span data-i18n="hero.chip.name">Udacity Global Chapters · Ethiopia</span>
+            <span class="chip-tag" data-i18n="hero.chip.tag">Intake open</span>
+          </div>
+
+          <h1>
+            <span data-i18n="hero.title.a">Four Udacity tracks.</span><br>
+            <em data-i18n="hero.title.b">One quiet pipeline.</em>
+          </h1>
+
+          <p class="lead" data-i18n-html="hero.lead">BKHAWK completes all four Ethiopia Global Chapters tracks for you — then hands back <strong>clean, uncropped A4 landscape PDFs</strong> with live verification links. Free to submit. The 50 ETB lands only when your certificates are ready.</p>
+
+          <div class="hero-cta">
+            <a href="app.html" class="btn btn-primary" data-i18n="hero.cta.start">Start intake</a>
+            <a href="app.html#status" class="btn btn-secondary" data-i18n="hero.cta.status">Check a submission</a>
+          </div>
+          <p class="hero-note" data-i18n="hero.note">Free intake · 50 ETB at claim · Telebirr or @nameofbless</p>
+
+          <div class="composer" data-reveal>
+            <div class="composer-bar">
+              <span class="composer-title" data-i18n="chat.title">Certification Studio</span>
+              <span class="composer-status"><span class="dot" aria-hidden="true"></span><span data-i18n="chat.online">Reviewer online</span></span>
+            </div>
+            <div class="composer-body">
+              <div class="chat-user" data-i18n="chat.user">“All four tracks, please — uncropped landscape PDFs.”</div>
+              <div class="chat-ai">
+                <div class="chat-avatar" aria-hidden="true">✳</div>
+                <div class="chat-bubble">
+                  <p class="chat-line" data-i18n="chat.intro">On it. Here’s what leaves the bench:</p>
+                  <ul class="chat-list">
+                    <li><span class="tick">✓</span><span>Programming Fundamentals</span><span class="meta">PDF</span></li>
+                    <li><span class="tick">✓</span><span>Android Developer Fundamentals</span><span class="meta">PDF</span></li>
+                    <li><span class="tick">✓</span><span>AI Fundamentals</span><span class="meta">PDF</span></li>
+                    <li><span class="tick">✓</span><span>Data Fundamentals</span><span class="meta">PDF</span></li>
+                  </ul>
+                  <div class="chat-foot">
+                    <span class="pill" data-i18n="pill.a4">A4 landscape</span>
+                    <span class="pill" data-i18n="pill.scale">Scale 0.82</span>
+                    <span class="pill" data-i18n="pill.verified">Verified links</span>
+                    <span class="pill" data-i18n="pill.pay">Pay at claim</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="app.html" class="composer-input composer-link">
+              <span data-i18n="chat.input">Describe your certification run…</span>
+              <span class="composer-send" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 19V5M5 12l7-7 7 7"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+
+          <div class="stats" data-reveal style="--d: .08s">
+            <div class="stat">
+              <span class="stat-num" data-i18n="stats.tracks.num">04</span>
+              <span class="stat-label" data-i18n="stats.tracks.label">Tracks completed</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-i18n="stats.free.num">Free</span>
+              <span class="stat-label" data-i18n="stats.free.label">Intake, no deposit</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-i18n="stats.fee.num">50 ETB</span>
+              <span class="stat-label" data-i18n="stats.fee.label">Only at claim</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-i18n="stats.paper.num">A4</span>
+              <span class="stat-label" data-i18n="stats.paper.label">Landscape, uncropped</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Main Grid: Submit Form & Features -->
-    <div class="grid-2" id="submit">
-      <!-- Submission Form Card -->
-      <section class="card">
-        <div class="card-header">
-          <div class="badge badge-gold" style="margin-bottom: 8px;">1. INTAKE & ESCROW</div>
-          <h2 class="card-title">Candidate Intake Form</h2>
-          <p class="card-subtitle">Enter your Udacity account credentials. All submissions are stored for administrative review.</p>
+    <!-- Process -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow" data-i18n="process.eyebrow">The pipeline</span>
+          <h2 data-i18n="process.title">Careful by design.</h2>
+          <p data-i18n="process.sub">No deposit to start, no forms to chase. Four deliberate stages — and the fee arrives only when the work is done.</p>
         </div>
 
-        <div class="google-auth-box">
-          <div style="font-size: 0.88rem;">
-            <strong>Sign in with Google</strong>
-            <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 2px;">One-click autofill for candidate information.</p>
-          </div>
-          <div id="googleSignInButtonInline"></div>
+        <div class="process-grid">
+          <article class="step-card" data-reveal>
+            <span class="step-num">01</span>
+            <h3 data-i18n="process.s1.title">Intake — free</h3>
+            <p data-i18n="process.s1.body">Share the certificate name, account email and the tracks you need. No payment, no sign-in, no deposit.</p>
+          </article>
+          <article class="step-card" data-reveal style="--d: .07s">
+            <span class="step-num">02</span>
+            <h3 data-i18n="process.s2.title">Review & solve</h3>
+            <p data-i18n="process.s2.body">A reviewer checks the intake, then the solver completes your tracks with credentials held in escrow.</p>
+          </article>
+          <article class="step-card" data-reveal style="--d: .14s">
+            <span class="step-num">03</span>
+            <h3 data-i18n="process.s3.title">Approval</h3>
+            <p data-i18n="process.s3.body">Your status page flips to Approved. Only now does the 50 ETB claim open — the password and files stay sealed.</p>
+          </article>
+          <article class="step-card" data-reveal style="--d: .21s">
+            <span class="step-num">04</span>
+            <h3 data-i18n="process.s4.title">Pay & claim</h3>
+            <p data-i18n-html="process.s4.body">Pay via Telebirr, or verify manually through <a class="inline-link" href="https://t.me/nameofbless" target="_blank" rel="noopener">@nameofbless</a>. Then the new password and PDFs release.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tracks -->
+    <section class="section" id="tracks" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow" data-i18n="tracks.eyebrow">Official curriculum</span>
+          <h2 data-i18n-html="tracks.title">Four tracks, covered <em>end to end.</em></h2>
+          <p data-i18n="tracks.sub">Every Ethiopia Global Chapters track, completed with the same standard of care — and the same clean paperwork.</p>
         </div>
 
-        <form id="submissionForm">
-          <div class="form-group">
-            <label class="form-label" for="candidateName">Full Name (For Certificate)</label>
-            <input type="text" id="candidateName" class="form-input" placeholder="e.g. Bruk Getachew" required>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="candidateEmail">Udacity Account Email</label>
-            <input type="email" id="candidateEmail" class="form-input" placeholder="student@example.com" required>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="candidatePassword">Udacity Account Password</label>
-            <input type="password" id="candidatePassword" class="form-input" placeholder="••••••••••••" required>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="candidatePhone">Phone Number</label>
-            <input type="tel" id="candidatePhone" class="form-input" placeholder="+251960756111" required>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">Select Certification Tracks</label>
-            <div class="tracks-selection">
-              <label class="track-check">
-                <input type="checkbox" name="track" value="programming" checked>
-                <span>Programming Fundamentals</span>
-              </label>
-              <label class="track-check">
-                <input type="checkbox" name="track" value="android" checked>
-                <span>Android Developer</span>
-              </label>
-              <label class="track-check">
-                <input type="checkbox" name="track" value="ai" checked>
-                <span>AI Fundamentals</span>
-              </label>
-              <label class="track-check">
-                <input type="checkbox" name="track" value="data" checked>
-                <span>Data Fundamentals</span>
-              </label>
+        <div class="tracks-grid">
+          <article class="track-card" data-reveal>
+            <span class="track-index">01 / PROGRAMMING</span>
+            <h3>Programming Fundamentals</h3>
+            <p data-i18n="tracks.programming.body">Python syntax, control flow, functions, and the data structures that follow you into every codebase after.</p>
+            <div class="track-tags">
+              <span data-i18n="tracks.programming.tag1">Python</span>
+              <span data-i18n="tracks.programming.tag2">Logic</span>
+              <span data-i18n="tracks.programming.tag3">Data structures</span>
             </div>
-          </div>
+          </article>
 
-          <!-- Telebirr Payment Card -->
-          <div class="telebirr-banner">
-            <div class="telebirr-row">
-              <span style="font-weight: 700; color: #ffffff; text-transform: uppercase; font-size: 0.85rem;">Telebirr Service Fee</span>
-              <span class="telebirr-amount">50 ETB</span>
+          <article class="track-card" data-reveal style="--d: .07s">
+            <span class="track-index">02 / ANDROID</span>
+            <h3>Android Developer Fundamentals</h3>
+            <p data-i18n="tracks.android.body">Kotlin architecture, layouts, ViewModels, and state that behaves the way the screen promises it will.</p>
+            <div class="track-tags">
+              <span data-i18n="tracks.android.tag1">Kotlin</span>
+              <span data-i18n="tracks.android.tag2">Layouts</span>
+              <span data-i18n="tracks.android.tag3">ViewModel</span>
             </div>
-            <p style="color: #cbd5e1; font-size: 0.82rem; margin-bottom: 12px;">
-              Please transfer <strong>50 Birr</strong> via Telebirr to the official accepter number:
-            </p>
-            <div class="telebirr-row" style="margin-bottom: 14px;">
-              <div class="telebirr-acc">
-                <span id="telebirrNumber">+251960756111</span>
-                <button type="button" class="copy-btn" onclick="copyAccepterNumber()">Copy</button>
+          </article>
+
+          <article class="track-card" data-reveal style="--d: .14s">
+            <span class="track-index">03 / AI</span>
+            <h3>AI Fundamentals</h3>
+            <p data-i18n="tracks.ai.body">Machine-learning workflows, model behaviour, and the practical shape of generative AI in real work.</p>
+            <div class="track-tags">
+              <span data-i18n="tracks.ai.tag1">ML workflows</span>
+              <span data-i18n="tracks.ai.tag2">GenAI</span>
+              <span data-i18n="tracks.ai.tag3">Evaluation</span>
+            </div>
+          </article>
+
+          <article class="track-card" data-reveal style="--d: .21s">
+            <span class="track-index">04 / DATA</span>
+            <h3>Data Fundamentals</h3>
+            <p data-i18n="tracks.data.body">SQL joins, aggregation, and analytics you can stand behind when someone asks where the number came from.</p>
+            <div class="track-tags">
+              <span data-i18n="tracks.data.tag1">SQL</span>
+              <span data-i18n="tracks.data.tag2">Analysis</span>
+              <span data-i18n="tracks.data.tag3">Reporting</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Standards -->
+    <section class="section" id="standards" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow" data-i18n="standards.eyebrow">Precision standards</span>
+          <h2 data-i18n-html="standards.title">Built to the <em>millimetre.</em></h2>
+          <p data-i18n="standards.sub">Certificate files are treated like documents, not screenshots. Every edge, every link, every page — exact.</p>
+        </div>
+
+        <div class="bento">
+          <article class="bento-card card-tall dark-card" data-reveal>
+            <div>
+              <span class="dark-eyebrow"><span class="lock-dot"></span><span data-i18n="standards.escrow.eyebrow">Escrow by default</span></span>
+              <h3 data-i18n="standards.escrow.title">Nothing unlocks early.</h3>
+              <p data-i18n="standards.escrow.body">Credentials are sealed the moment intake lands. The files and the new password stay locked through review and solving — then open together, only after the 50 ETB claim clears.</p>
+            </div>
+            <ol class="vault-flow" aria-label="Escrow flow">
+              <li><span>01</span> <span data-i18n="vault.1">Intake received</span> <span class="flow-tick">✓</span></li>
+              <li><span>02</span> <span data-i18n="vault.2">Credentials sealed</span> <span class="flow-tick">✓</span></li>
+              <li><span>03</span> <span data-i18n="vault.3">Tracks approved</span> <span class="flow-tick">✓</span></li>
+              <li><span>04</span> <span data-i18n="vault.4">Payment verified</span> <span class="flow-tick">✓</span></li>
+              <li><span>05</span> <span data-i18n="vault.5">Package released</span> <span class="flow-tick">✓</span></li>
+            </ol>
+          </article>
+
+          <article class="bento-card" data-reveal style="--d: .07s">
+            <span class="icon-chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="3" width="16" height="18" rx="2"/>
+                <path d="M8 8h8M8 12h8M8 16h5"/>
+              </svg>
+            </span>
+            <h3 data-i18n="standards.landscape.title">Landscape, uncropped.</h3>
+            <p data-i18n-html="standards.landscape.body">Every certificate renders to exact one-page A4 landscape with the <code>scale 0.82</code> engine — no clipped borders, no cut names, no missing verification links.</p>
+            <div class="cert-wrap" aria-hidden="true">
+              <div class="cert-preview">
+                <div class="cert-inner">
+                  <span class="cert-kicker" data-i18n="cert.kicker">Udacity · Global Chapters</span>
+                  <span class="cert-title" data-i18n="cert.caption">Certificate of Completion</span>
+                  <span class="cert-name" data-i18n="cert.name.sample">Bruk Getachew</span>
+                  <span class="cert-line"></span>
+                  <span class="cert-meta" data-i18n="cert.meta">Programming Fundamentals · 2026</span>
+                  <span class="cert-seal">✓</span>
+                </div>
               </div>
-              <span style="font-size: 0.78rem; color: #94a3b8;">Receiver: BKHAWK</span>
             </div>
+          </article>
 
-            <div class="form-group" style="margin-bottom: 0;">
-              <label class="form-label" for="telebirrRef" style="color: #ffffff;">Telebirr Transaction Reference / Receipt Link</label>
-              <input type="text" id="telebirrRef" class="form-input" placeholder="e.g. TB12345678 or SMS receipt text" style="background: rgba(0,0,0,0.5);">
-            </div>
-          </div>
+          <article class="bento-card" data-reveal style="--d: .14s">
+            <span class="icon-chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.1 0l2.4-2.4a5 5 0 1 0-7.1-7.1L11 4.9"/>
+                <path d="M14 11a5 5 0 0 0-7.1 0L4.5 13.4a5 5 0 1 0 7.1 7.1L13 19.1"/>
+              </svg>
+            </span>
+            <h3 data-i18n="standards.verify.title">Live verification.</h3>
+            <p data-i18n-html="standards.verify.body">Each credential carries its own <code>confirm.udacity.com/lp/…</code> link, ready for anyone who asks — employers included.</p>
+          </article>
 
-          <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">
-            🚀 Submit Account for Certification
-          </button>
-        </form>
-
-        <!-- Result / Pending Review Card -->
-        <div id="pendingResultCard" class="pending-card">
-          <div class="pending-header">
-            <span style="font-size: 2rem;">🟡</span>
-            <div class="pending-title">STATUS: PENDING REVIEW</div>
-          </div>
-          <p style="color: var(--text-dim); font-size: 0.95rem;">
-            Your credentials have been securely stored in our submission database. Our admin is reviewing your 50 ETB Telebirr transfer.
-          </p>
-
-          <div class="meta-box">
-            <div class="meta-row">
-              <span class="meta-label">Submission ID:</span>
-              <span class="meta-value" id="resSubId">BK-XXXXXX</span>
+          <article class="bento-card span-all wide-card" data-reveal style="--d: .21s">
+            <div class="wide-main">
+              <span class="icon-chip" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 8v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8"/>
+                  <path d="M1 3h22v5H1zM10 12h4"/>
+                </svg>
+              </span>
+              <h3 data-i18n="standards.package.title">The full package.</h3>
+              <p data-i18n="standards.package.body">Individual certificate PDFs plus one ZIP archive, assembled at release. Everything stays downloadable from your status page — no expiry games.</p>
             </div>
-            <div class="meta-row">
-              <span class="meta-label">Submitted Time:</span>
-              <span class="meta-value" id="resSubmitTime">--:--:-- UTC</span>
-            </div>
-            <div class="meta-row">
-              <span class="meta-label">Candidate Name:</span>
-              <span class="meta-value" id="resCandidateName">--</span>
-            </div>
-            <div class="meta-row">
-              <span class="meta-label">Fee Expected:</span>
-              <span class="meta-value">50 ETB (Telebirr)</span>
-            </div>
-          </div>
-
-          <div class="step-tracker">
-            <div class="step-item completed">
-              <div class="step-circle">✓</div>
-              <div class="step-text">Submitted</div>
-            </div>
-            <div class="step-item active">
-              <div class="step-circle">2</div>
-              <div class="step-text">Admin Review</div>
-            </div>
-            <div class="step-item">
-              <div class="step-circle">3</div>
-              <div class="step-text">Solver Engine</div>
-            </div>
-            <div class="step-item">
-              <div class="step-circle">4</div>
-              <div class="step-text">Official PDFs</div>
-            </div>
-          </div>
-
-          <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
-            <button class="btn btn-secondary btn-sm" onclick="copySubmissionId()">📋 Copy ID</button>
-            <button class="btn btn-primary btn-sm" onclick="checkCurrentStatus()">🔄 Refresh Status</button>
-          </div>
+            <ul class="zip-list">
+              <li><span class="file-ic">PDF</span>Programming Fundamentals</li>
+              <li><span class="file-ic">PDF</span>Android Developer Fundamentals</li>
+              <li><span class="file-ic">PDF</span>AI Fundamentals</li>
+              <li><span class="file-ic">PDF</span>Data Fundamentals</li>
+              <li><span class="file-ic zip">ZIP</span><span data-i18n="standards.package.bundled">All four, bundled</span></li>
+            </ul>
+          </article>
         </div>
-      </section>
-
-      <!-- Sidebar: Features & Track Information -->
-      <aside>
-        <div class="card" style="margin-bottom: 24px;" id="tracks">
-          <div class="card-header">
-            <div class="badge badge-cyan" style="margin-bottom: 8px;">OFFICIAL CURRICULUM</div>
-            <h3 class="card-title">Supported 4 Tracks</h3>
-            <p class="card-subtitle">Udacity Global Chapters - Ethiopia program</p>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 14px;">
-            <div style="padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px;">
-              <strong style="color: var(--cyan);">1. Programming Fundamentals</strong>
-              <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Python syntax, loops, functions, and standard data structures.</p>
-            </div>
-            <div style="padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px;">
-              <strong style="color: var(--cyan);">2. Android Developer Fundamentals</strong>
-              <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Kotlin architecture, layouts, ViewModels, and state management.</p>
-            </div>
-            <div style="padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px;">
-              <strong style="color: var(--cyan);">3. AI Fundamentals</strong>
-              <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Machine learning workflows, models, and generative AI basics.</p>
-            </div>
-            <div style="padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px;">
-              <strong style="color: var(--cyan);">4. Data Fundamentals</strong>
-              <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">SQL relational querying, data manipulation, and analytics.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" id="features">
-          <div class="card-header">
-            <div class="badge badge-emerald" style="margin-bottom: 8px;">PRECISION STANDARDS</div>
-            <h3 class="card-title">Uncropped Landscape PDFs</h3>
-            <p class="card-subtitle">Exact 1-page A4 landscape dimensions</p>
-          </div>
-          <ul style="color: var(--text-dim); font-size: 0.88rem; list-style: none; display: flex; flex-direction: column; gap: 10px;">
-            <li>✓ <strong>Scale 0.82 Engine</strong>: No clipped borders, names, or verification links.</li>
-            <li>✓ <strong>Udacity Verification</strong>: Live confirm links on <code>confirm.udacity.com/lp/...</code></li>
-            <li>✓ <strong>Telebirr Escrow</strong>: Automated password lock and release upon 50 ETB fee.</li>
-            <li>✓ <strong>Full Package</strong>: All 4 single PDFs + Complete ZIP archive.</li>
-          </ul>
-        </div>
-      </aside>
-    </div>
-
-    <!-- Status Checker Section -->
-    <section class="card" id="status-checker" style="margin: 40px 0;">
-      <div class="card-header" style="text-align: center;">
-        <div class="badge badge-cyan" style="margin-bottom: 8px;">TRACK YOUR SUBMISSION</div>
-        <h2 class="card-title">Check Status By ID</h2>
-        <p class="card-subtitle">Enter your BK-XXXXXX submission ID to see current status or download completed certificates.</p>
       </div>
+    </section>
 
-      <div style="max-width: 540px; margin: 0 auto; display: flex; gap: 10px;">
-        <input type="text" id="lookupIdInput" class="form-input" placeholder="e.g. BK-AB7126" style="text-transform: uppercase;">
-        <button type="button" class="btn btn-primary" onclick="lookupSubmission()">Check</button>
+    <!-- FAQ -->
+    <section class="section" id="faq" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow" data-i18n="faq.eyebrow">Questions, answered</span>
+          <h2 data-i18n="faq.title">The fine print, plainly.</h2>
+        </div>
+
+        <div class="faq" data-reveal>
+          <details class="faq-item">
+            <summary data-i18n="faq.q1">When exactly do I pay the 50 ETB?</summary>
+            <p data-i18n="faq.a1">After your intake is reviewed and the tracks are approved — never before. The claim panel opens on your status page at that point, and the password plus certificates stay sealed until the payment is verified.</p>
+          </details>
+          <details class="faq-item">
+            <summary data-i18n="faq.q2">How do I pay, and what if I don’t have a reference?</summary>
+            <p data-i18n-html="faq.a2">Pay 50 ETB through Telebirr to the accepter number on this page, then paste the transaction reference into the claim panel. If you paid cash or can’t find the reference, message <a class="inline-link" href="https://t.me/nameofbless" target="_blank" rel="noopener">@nameofbless</a> on Telegram for manual verification.</p>
+          </details>
+          <details class="faq-item">
+            <summary data-i18n="faq.q3">Do I need a Google account or a sign-in?</summary>
+            <p data-i18n="faq.a3">No. Identity is your BK-XXXXXX submission ID — keep it private, because it opens your status, your claim and your downloads. There is no Google sign-in anywhere in the flow.</p>
+          </details>
+          <details class="faq-item">
+            <summary data-i18n="faq.q4">What exactly gets delivered after release?</summary>
+            <p data-i18n="faq.a4">Four individual certificate PDFs — one per track — plus a ZIP archive, and the new Udacity password for the account. Every file is one-page A4 landscape, uncropped, with its verification link intact.</p>
+          </details>
+          <details class="faq-item">
+            <summary data-i18n="faq.q5">How long does review take?</summary>
+            <p data-i18n="faq.a5">Most intakes are reviewed and solved the same day. Your status panel shows each stage — Pending, In progress, Approved, Payment under review, Released — so you always know where things stand.</p>
+          </details>
+          <details class="faq-item">
+            <summary data-i18n="faq.q6">Can someone verify the certificate?</summary>
+            <p data-i18n-html="faq.a6">Every certificate carries a live <code>confirm.udacity.com/lp/…</code> link. Anyone holding the file can open that link and confirm the credential directly with Udacity.</p>
+          </details>
+        </div>
       </div>
+    </section>
 
-      <div id="lookupResultBox" style="display: none; max-width: 680px; margin: 24px auto 0; padding: 20px; background: rgba(0,0,0,0.4); border-radius: 14px; border: 1px solid var(--border);">
+    <!-- Closing call -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="cta-band" data-reveal>
+          <div>
+            <h2 data-i18n="cta.title">Start free. Pay only when it’s done.</h2>
+            <p data-i18n="cta.sub">Intake takes a minute. Your BK ID is the only key you need.</p>
+          </div>
+          <a href="app.html" class="btn btn-primary" data-i18n="cta.button">Open the portal</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer style="text-align: center; padding: 40px 0; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid var(--border);">
+  <footer class="footer">
     <div class="container">
-      <p style="font-family: var(--font-display); letter-spacing: 0.08em; color: var(--text); margin-bottom: 6px;">
-        BKHAWK HACKING © 2026 • AUTOMATED CERTIFICATION PIPELINE
-      </p>
-      <p>Domain: <a href="https://bkhawk.dev" style="color: var(--cyan);">bkhawk.dev</a> • Accepter: +251960756111 (Telebirr)</p>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                <path d="M12 3v18M4 7.5l16 9M20 7.5l-16 9"/>
+              </svg>
+            </span>
+            <span>
+              <span class="brand-word">BKhawk</span>
+              <span class="brand-tag" data-i18n="brand.tag">Certification Studio</span>
+            </span>
+          </a>
+          <p data-i18n="footer.tagline">A quiet certification pipeline for Udacity Global Chapters Ethiopia. Four tracks, one fee at claim, documents done properly.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.explore">Explore</h4>
+          <a href="#process" data-i18n="nav.process">Process</a>
+          <a href="#tracks" data-i18n="nav.tracks">Tracks</a>
+          <a href="#standards" data-i18n="nav.standards">Standards</a>
+          <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.portal">Portal</h4>
+          <a href="app.html" data-i18n="nav.intake">Intake</a>
+          <a href="app.html#status" data-i18n="nav.status">Status</a>
+          <a href="admin.html" data-i18n="nav.admin">Admin</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.contact">Contact</h4>
+          <a href="https://t.me/nameofbless" target="_blank" rel="noopener">Telegram · @nameofbless</a>
+          <span>Telebirr · +251960756111</span>
+          <span data-i18n="footer.receiver">Receiver · BKHAWK</span>
+          <span data-i18n="footer.place">Dessie, Ethiopia</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span data-i18n="footer.rights">© 2026 BKHAWK Hacking</span>
+        <span data-i18n="footer.made">Built quietly · delivered exactly</span>
+      </div>
     </div>
   </footer>
 
+  <script src="i18n.js"></script>
+  <script src="config.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

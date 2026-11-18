@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n-title="meta.title.app">BKHAWK — Intake &amp; Status</title>
+  <meta name="description" content="BKHAWK intake and status portal. Submit your Udacity tracks for free, then claim the password and certificates after approval.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231f1e1b'/%3E%3Cpath d='M32 14v36M15 23l34 18M49 23L15 41' stroke='%23d97757' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Ethiopic:wght@300;400;500;600;700&family=Noto+Serif+Ethiopic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('bkhawk_theme') === 'dark') {
+          document.documentElement.dataset.theme = 'dark';
+        }
+        var lang = localStorage.getItem('bkhawk_lang');
+        if (lang === 'am' || lang === 'en') {
+          document.documentElement.lang = lang;
+          document.documentElement.dataset.lang = lang;
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body class="app-page">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+  <div class="grain"></div>
+
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand" aria-label="BKHAWK">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <path d="M12 3v18M4 7.5l16 9M20 7.5l-16 9"/>
+          </svg>
+        </span>
+        <span>
+          <span class="brand-word">BKhawk</span>
+          <span class="brand-tag" data-i18n="brand.tag">Certification Studio</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="#intake" data-tab-link="intake" data-i18n="nav.intake">Intake</a>
+        <a href="#status" data-tab-link="status" data-i18n="nav.status">Status</a>
+        <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="lang-switch" role="group" data-i18n-aria="nav.language" aria-label="Language">
+          <button type="button" data-lang="am" aria-pressed="false">አማ</button>
+          <button type="button" data-lang="en" class="active" aria-pressed="true">EN</button>
+        </div>
+
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+          </svg>
+        </button>
+
+        <a href="admin.html" class="btn btn-admin btn-sm" data-i18n="nav.admin">Admin</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="app-main">
+    <div class="container">
+      <div class="app-tabs" role="tablist" aria-label="Portal sections">
+        <button type="button" class="app-tab active" role="tab" id="tabIntake" data-tab="intake" aria-selected="true" aria-controls="panelIntake">
+          <span class="tab-index">01</span>
+          <span data-i18n="nav.intake">Intake</span>
+        </button>
+        <button type="button" class="app-tab" role="tab" id="tabStatus" data-tab="status" aria-selected="false" aria-controls="panelStatus">
+          <span class="tab-index">02</span>
+          <span data-i18n="nav.status">Status</span>
+        </button>
+      </div>
+
+      <!-- Panel: intake -->
+      <section class="app-panel active" id="panelIntake" role="tabpanel" aria-labelledby="tabIntake">
+        <div class="panel-head">
+          <span class="eyebrow" data-i18n="app.eyebrow">Intake & escrow</span>
+          <h1 class="app-title" data-i18n-html="app.title">Tell us who’s <em>graduating.</em></h1>
+          <p class="app-sub" data-i18n="app.sub">One free form. The 50 ETB only appears after approval, right before you claim the password and files.</p>
+        </div>
+
+        <div class="intake">
+          <aside class="intake-aside" data-reveal>
+            <ul class="intake-points">
+              <li><span class="check">✓</span> <span data-i18n="app.point1">Free to submit — no deposit, no payment up front.</span></li>
+              <li><span class="check">✓</span> <span data-i18n="app.point2">Your BK ID is your identity — no Google sign-in needed.</span></li>
+              <li><span class="check">✓</span> <span data-i18n="app.point3">Four tracks by default — untick any you don’t need.</span></li>
+              <li><span class="check">✓</span> <span data-i18n-html="app.point4">Manual payment checks handled by <a href="https://t.me/nameofbless" target="_blank" rel="noopener" class="inline-link">@nameofbless</a>.</span></li>
+            </ul>
+
+            <div class="mini-pay">
+              <div class="mini-pay-label">
+                <span data-i18n-html="app.pay.label">Payment &middot; due after approval</span>
+                <b>50 ETB</b>
+              </div>
+              <div class="mini-pay-number">
+                <span id="telebirrNumber">+251960756111</span>
+                <button type="button" class="copy-btn" data-copy-number data-i18n="app.copy">Copy</button>
+              </div>
+              <p class="mini-pay-note" data-i18n-html="app.pay.note">Receiver: BKHAWK. Pay only once your status says Approved. No reference yet? Message <a href="https://t.me/nameofbless" target="_blank" rel="noopener" class="inline-link">@nameofbless</a>.</p>
+            </div>
+          </aside>
+
+          <div class="form-card">
+            <div class="form-card-head">
+              <span class="badge badge-gold" data-i18n="form.badge">01 — Intake</span>
+              <h3 data-i18n="form.title">Candidate intake</h3>
+              <p data-i18n="form.sub">Every field is required unless marked optional. No payment here.</p>
+            </div>
+
+            <form id="submissionForm">
+              <div class="form-group">
+                <label class="form-label" for="candidateName"><span data-i18n="form.name">Full name</span> <span class="form-hint" data-i18n="form.name.hint">— exactly as it should appear on the certificate</span></label>
+                <input type="text" id="candidateName" class="form-input" data-i18n-ph="form.name.ph" placeholder="e.g. Bruk Getachew" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="candidateEmail" data-i18n="form.email">Udacity account email</label>
+                <input type="email" id="candidateEmail" class="form-input" placeholder="student@example.com" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="candidatePassword"><span data-i18n="form.password">Udacity password</span> <span class="form-hint" data-i18n="form.password.hint">— sealed on arrival</span></label>
+                  <input type="password" id="candidatePassword" class="form-input" placeholder="••••••••••••" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="candidatePhone" data-i18n="form.phone">Phone number</label>
+                  <input type="tel" id="candidatePhone" class="form-input" placeholder="+251960756111" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" data-i18n="form.tracks">Certification tracks</label>
+                <div class="tracks-selection">
+                  <label class="track-check">
+                    <input type="checkbox" name="track" value="programming" checked>
+                    <span class="tick" aria-hidden="true"></span>
+                    <span data-i18n="track.programming">Programming Fundamentals</span>
+                  </label>
+                  <label class="track-check">
+                    <input type="checkbox" name="track" value="android" checked>
+                    <span class="tick" aria-hidden="true"></span>
+                    <span data-i18n="track.android">Android Developer</span>
+                  </label>
+                  <label class="track-check">
+                    <input type="checkbox" name="track" value="ai" checked>
+                    <span class="tick" aria-hidden="true"></span>
+                    <span data-i18n="track.ai">AI Fundamentals</span>
+                  </label>
+                  <label class="track-check">
+                    <input type="checkbox" name="track" value="data" checked>
+                    <span class="tick" aria-hidden="true"></span>
+                    <span data-i18n="track.data">Data Fundamentals</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="pay-later">
+                <span class="pay-later-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="5" width="20" height="14" rx="2"/>
+                    <path d="M2 10h20"/>
+                  </svg>
+                </span>
+                <div>
+                  <strong data-i18n="form.nopay.title">No payment now.</strong>
+                  <p data-i18n-html="form.nopay.body">When review approves your run, your status page opens the 50 ETB claim — Telebirr, or manual verification through <a href="https://t.me/nameofbless" target="_blank" rel="noopener" class="inline-link">@nameofbless</a>.</p>
+                </div>
+              </div>
+
+              <button type="submit" id="submitBtn" class="btn btn-primary btn-block" data-i18n="form.submit">Submit for review</button>
+              <p class="form-fineprint" data-i18n="form.fineprint">You’ll receive a BK-XXXXXX ID immediately. That ID is your key — no account sign-in required.</p>
+            </form>
+
+            <div id="pendingResultCard" class="pending-card">
+              <div class="pending-header">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span class="pending-title" data-i18n="stage.title">Status: Pending review</span>
+              </div>
+              <p data-i18n="stage.body">Your credentials are stored and sealed. A reviewer is checking the intake now — nothing is due yet.</p>
+
+              <div class="meta-box">
+                <div class="meta-row">
+                  <span class="meta-label" data-i18n="meta.id">Submission ID</span>
+                  <span class="meta-value" id="resSubId">BK-XXXXXX</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label" data-i18n="meta.submitted">Submitted</span>
+                  <span class="meta-value" id="resSubmitTime">--:--:-- UTC</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label" data-i18n="meta.candidate">Candidate</span>
+                  <span class="meta-value" id="resCandidateName">--</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label" data-i18n="meta.payment">Payment</span>
+                  <span class="meta-value" data-i18n="meta.payment.value">50 ETB · after approval</span>
+                </div>
+              </div>
+
+              <div class="step-tracker" aria-hidden="true">
+                <div class="step-item completed">
+                  <div class="step-circle">✓</div>
+                  <div class="step-text" data-i18n="step.submitted">Submitted</div>
+                </div>
+                <div class="step-item active">
+                  <div class="step-circle">2</div>
+                  <div class="step-text" data-i18n="step.review">Review</div>
+                </div>
+                <div class="step-item">
+                  <div class="step-circle">3</div>
+                  <div class="step-text" data-i18n="step.approved">Approved</div>
+                </div>
+                <div class="step-item">
+                  <div class="step-circle">4</div>
+                  <div class="step-text" data-i18n="step.claim">Claim</div>
+                </div>
+              </div>
+
+              <div class="pending-actions">
+                <button type="button" class="btn btn-secondary btn-sm" data-copy-id data-i18n="btn.copyId">Copy ID</button>
+                <button type="button" class="btn btn-primary btn-sm" data-open-status data-i18n="btn.openStatus">Open status</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel: status -->
+      <section class="app-panel" id="panelStatus" role="tabpanel" aria-labelledby="tabStatus">
+        <div class="panel-head">
+          <span class="eyebrow" data-i18n="status.eyebrow">Track your submission</span>
+          <h1 class="app-title" data-i18n-html="status.title">Where’s my certificate?</h1>
+          <p class="app-sub" data-i18n="status.sub">Enter the ID you received at intake to follow the stage — and to claim the password and files once approved.</p>
+        </div>
+
+        <div class="intake status-layout">
+          <aside class="intake-aside">
+            <ul class="intake-points">
+              <li><span class="check">✓</span> <span data-i18n="status.tip1">Your ID is a six-character code that starts with BK-.</span></li>
+              <li><span class="check">✓</span> <span data-i18n="status.tip2">The payment panel appears by itself once the status flips to Approved.</span></li>
+              <li><span class="check">✓</span> <span data-i18n="status.tip3">The released password and files show up on this same page.</span></li>
+            </ul>
+
+            <div class="pay-later">
+              <span class="pay-later-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.9-.9L3 21l1.9-4.6A8.4 8.4 0 0 1 4 11.5 8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/>
+                </svg>
+              </span>
+              <div>
+                <strong data-i18n="status.help.title">Need a hand?</strong>
+                <p data-i18n-html="status.help.body">If you lost the ID or a payment is stuck, message <a href="https://t.me/nameofbless" target="_blank" rel="noopener" class="inline-link">@nameofbless</a> on Telegram.</p>
+              </div>
+            </div>
+          </aside>
+
+          <div class="checker-card">
+            <div class="checker-form">
+              <input type="text" id="lookupIdInput" class="form-input" data-i18n-ph="status.placeholder" placeholder="BK-XXXXXX" aria-label="Submission ID" style="text-transform: uppercase;">
+              <button type="button" class="btn btn-primary" id="lookupBtn" data-i18n="status.check">Check status</button>
+            </div>
+            <div id="lookupResultBox"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer footer-compact">
+    <div class="container footer-compact-inner">
+      <span data-i18n="footer.rights">© 2026 BKHAWK Hacking</span>
+      <span class="footer-dot">·</span>
+      <span data-i18n="footer.place">Dessie, Ethiopia</span>
+      <span class="footer-dot">·</span>
+      <a href="https://t.me/nameofbless" target="_blank" rel="noopener">@nameofbless</a>
+      <span class="footer-dot">·</span>
+      <span>Telebirr +251960756111</span>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
